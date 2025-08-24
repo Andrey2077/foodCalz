@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/searchfood")
+@RequestMapping("api/v1/foods")
 @RequiredArgsConstructor
 public class FoodSearchController {
 
@@ -28,13 +28,14 @@ public class FoodSearchController {
             @ApiResponse(responseCode = "400", description = "Некорректный запрос"),
             @ApiResponse(responseCode = "404", description = "Продукт не найден")
     })
-
-    @PostMapping("/byId")
+    @GetMapping("/{id}")
     public ResponseEntity<FoodDataResponse> handleRequestById(
             @Parameter(description = "ID продукта", required = true)
-            @RequestBody FoodDataRequest data) {
+            @PathVariable Long id) {
+        FoodDataRequest data = new FoodDataRequest(String.valueOf(id));
         return new ResponseEntity<>(foodService.byId(data.getId()), HttpStatus.OK);
     }
+
 
     @Operation(summary = "Получить список всех продуктов")
     @ApiResponses(value = {
