@@ -3,7 +3,7 @@ package com.example.foodcalz.controller;
 
 import com.example.foodcalz.dto.FoodDataRequest;
 import com.example.foodcalz.dto.FoodDataResponse;
-import com.example.foodcalz.service.data.DataFoodSearchService;
+import com.example.foodcalz.service.data.DataFoodSearchServiceServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -20,7 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FoodSearchController {
 
-    private final DataFoodSearchService foodService;
+    private final DataFoodSearchServiceServiceImpl foodService;
 
     @Operation(summary = "Поиск продукта по ID")
     @ApiResponses(value = {
