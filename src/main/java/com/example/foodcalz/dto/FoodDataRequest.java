@@ -7,5 +7,5 @@ import lombok.Data;
 @AllArgsConstructor
 public class FoodDataRequest {
 
-    private String id;
+    private Long id;
 }

@@ -19,7 +19,7 @@ public class DataFoodSearchService implements DataFoodSearchInterface {
     private final FoodMapper foodMapper;
 
     @Override
-    public FoodDataResponse byId(String id) {
+    public FoodDataResponse byId(Long id) {
         return foodMapper.toDataResponse(jpaFoodSearchService.byId(Long.valueOf(id)));
     }
 

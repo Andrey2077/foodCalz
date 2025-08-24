@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface DataFoodSearchInterface {
 
-    FoodDataResponse byId(String id);
+    FoodDataResponse byId(Long id);
     List<FoodDataResponse> byAll();
 
 }

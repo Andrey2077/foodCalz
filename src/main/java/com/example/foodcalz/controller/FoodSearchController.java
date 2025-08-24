@@ -32,7 +32,7 @@ public class FoodSearchController {
     public ResponseEntity<FoodDataResponse> handleRequestById(
             @Parameter(description = "ID продукта", required = true)
             @PathVariable Long id) {
-        FoodDataRequest data = new FoodDataRequest(String.valueOf(id));
+        FoodDataRequest data = new FoodDataRequest(id);
         return new ResponseEntity<>(foodService.byId(data.getId()), HttpStatus.OK);
     }
 
