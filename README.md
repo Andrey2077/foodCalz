@@ -11,9 +11,15 @@ Liquibase — миграции;
 MapStruct — маппинг сущность↔️DTO; 
 Swagger (springdoc) — интерактивная API-документация.
 
-Архитектура (монолит с асинхронными задачами)
+Архитектура (монолит с асинхронными задачами):
+
  • Spring Boot 3 (MVC + Security + Validation)
+
  • Spring Data JPA (Hibernate) + Postgres
+
  • Liquibase: версионирование схемы.
+
  • MapStruct: DTO ↔️ Entity.
+
  • springdoc-openapi-starter-webmvc-ui: Swagger UI.
+
