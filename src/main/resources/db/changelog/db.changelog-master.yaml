@@ -1,6 +1,6 @@
 databaseChangeLog:
   - include:
-      file: db/changelog/tables/db.changelog-sequence.yaml
+      file: db/changelog/additional/db.changelog-sequence.yaml
   - include:
       file: db/changelog/tables/db.changelog-food.yaml
   - include:
@@ -9,3 +9,5 @@ databaseChangeLog:
       file: db/changelog/tables/db.changelog-diary-entry.yaml
   - include:
       file: db/changelog/data/db.changelog-initial-data.yaml
+  - include:
+      file: db/changelog/additional/db.changelog-indexes.yaml
