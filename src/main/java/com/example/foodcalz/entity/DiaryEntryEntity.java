@@ -2,15 +2,18 @@ package com.example.foodcalz.entity;
 
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-//id, user, food, date, mealType, grams.
 
 @Entity
 @Table(name = "diary_entries")
 @NoArgsConstructor
+@Getter
+@Setter
 public class DiaryEntryEntity {
 
 
