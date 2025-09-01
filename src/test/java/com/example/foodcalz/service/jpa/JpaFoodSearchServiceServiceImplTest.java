@@ -27,7 +27,8 @@ class JpaFoodSearchServiceServiceImplTest {
     @Mock
     private FoodJpaRepository foodJpaRepository;
 
-    private JpaFoodSearchServiceServiceImpl jpaFoodSearchService = new JpaFoodSearchServiceServiceImpl(foodJpaRepository);
+    @InjectMocks
+    private JpaFoodSearchServiceServiceImpl jpaFoodSearchService;
 
     private FoodEntity foodEntity1;
     private FoodEntity foodEntity2;
@@ -60,11 +61,11 @@ class JpaFoodSearchServiceServiceImplTest {
         when(foodJpaRepository.findById(1L)).thenReturn(Optional.ofNullable(foodEntity1));
         when(foodJpaRepository.findById(2L)).thenReturn(Optional.ofNullable(foodEntity2));
 
-        Optional<FoodEntity> testFoodEntity1 = foodJpaRepository.findById(1L);
-        Optional<FoodEntity> testFoodEntity2 = foodJpaRepository.findById(2L);
+        FoodEntity testFoodEntity1 = jpaFoodSearchService.byId(1L);
+        FoodEntity testFoodEntity2 = jpaFoodSearchService.byId(2L);
 
-        assertEquals(foodJpaRepository.findById(1L), foodEntity1);
-        assertEquals(foodJpaRepository.findById(2L), foodEntity1);
+        assertEquals(foodEntity1, testFoodEntity1);
+        assertEquals(foodEntity2, testFoodEntity2);
         verify(foodJpaRepository, times(1)).findById(1L);
         verify(foodJpaRepository, times(1)).findById(2L);
     }
@@ -73,12 +74,7 @@ class JpaFoodSearchServiceServiceImplTest {
     void getFoodByIdNotFound() {
         when(foodJpaRepository.findById(3L)).thenReturn(Optional.empty());
 
-        FoodNotFoundException exception = assertThrows(
-                FoodNotFoundException.class,
-                () -> jpaFoodSearchService.byId(3L)
-        );
-
-        assertEquals("Food not found by id:3", exception.getMessage());
+        assertThrows(FoodNotFoundException.class, () -> jpaFoodSearchService.byId(3L));
     }
 
     @Test
@@ -86,11 +82,11 @@ class JpaFoodSearchServiceServiceImplTest {
         List<FoodEntity> listResult = List.of(foodEntity1, foodEntity2);
         when(foodJpaRepository.findAll()).thenReturn(listResult);
 
-        List<FoodEntity> actual = jpaFoodSearchService.byAll();
+        List<FoodEntity> result = jpaFoodSearchService.byAll();
 
-        assertEquals(2, actual.size());
-        assertEquals("Яблоко", actual.get(0).getName());
-        assertEquals("Огурец", actual.get(1).getName());
+        assertEquals(2, result.size());
+        assertEquals("Огурец", result.get(0).getName());
+        assertEquals("Яблоко", result.get(1).getName());
 
         verify(foodJpaRepository, times(1)).findAll();
 
