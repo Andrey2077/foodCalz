@@ -27,8 +27,7 @@ public class FoodSearchControllerImpl implements FoodSearchController{
 
     @Override
     public ResponseEntity<FoodDataResponse> handleRequestById(Long id) throws FoodNotFoundException, FoodDtoCreationException {
-        FoodDataRequest data = new FoodDataRequest(id);
-        return new ResponseEntity<>(foodService.byId(data.getId()), HttpStatus.OK);
+        return new ResponseEntity<>(foodService.byId(id), HttpStatus.OK);
     }
 
 
