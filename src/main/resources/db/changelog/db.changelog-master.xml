@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+            http://www.liquibase.org/xml/ns/dbchangelog
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+
+    <include file="tables/2025/08/30/db.changelog-user.xml" relativeToChangelogFile="true"/>
+    <include file="tables/2025/08/30/db.changelog-food.xml" relativeToChangelogFile="true"/>
+    <include file="tables/2025/08/30/db.changelog-diary-entry.xml" relativeToChangelogFile="true"/>
+
+
+    <include file="data/2025/08/30/db.changelog-initial-data.xml" relativeToChangelogFile="true"/>
+
+
+    <include file="additional/2025/08/30/db.changelog-sequence.xml" relativeToChangelogFile="true"/>
+    <include file="additional/2025/08/30/db.changelog-indexes.xml" relativeToChangelogFile="true"/>
+
+
+
+</databaseChangeLog>

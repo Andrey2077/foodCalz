@@ -2,13 +2,17 @@ package com.example.foodcalz.entity;
 
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
 @NoArgsConstructor
+@Getter
+@Setter
 public class UserEntity {
 
     @Id

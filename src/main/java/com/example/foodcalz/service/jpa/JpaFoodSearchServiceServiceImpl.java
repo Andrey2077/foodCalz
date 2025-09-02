@@ -1,5 +1,6 @@
 package com.example.foodcalz.service.jpa;
 
+import com.example.foodcalz.exception.FoodNotFoundException;
 import com.example.foodcalz.repository.FoodJpaRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +16,8 @@ public class JpaFoodSearchServiceServiceImpl implements JpaFoodSearchService {
     private final FoodJpaRepository foodJpaRepository;
 
     @Override
-    public FoodEntity byId(Long id) {
-        return foodJpaRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Food not found by id:" + id));
+    public FoodEntity byId(Long id) throws FoodNotFoundException {
+        return foodJpaRepository.findById(id).orElseThrow(() -> new FoodNotFoundException("Food not found by id: " + id));
     }
 
     @Override
