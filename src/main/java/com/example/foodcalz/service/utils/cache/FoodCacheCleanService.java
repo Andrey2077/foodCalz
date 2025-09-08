@@ -6,4 +6,6 @@ public interface FoodCacheCleanService {
 
     SimpleCacheDataResponse clearCache();
 
+    SimpleCacheDataResponse clearById(Long id);
+
 }
